@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("WinActionWeaverTests")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("WinActionWeaver.Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f7272a7a0cc2dfadc6643a75290a95b42b3f191")]
-[assembly: System.Reflection.AssemblyProductAttribute("WinActionWeaverTests")]
-[assembly: System.Reflection.AssemblyTitleAttribute("WinActionWeaverTests")]
+[assembly: System.Reflection.AssemblyProductAttribute("WinActionWeaver.Console")]
+[assembly: System.Reflection.AssemblyTitleAttribute("WinActionWeaver.Console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Von der MSBuild WriteCodeFragment-Klasse generiert.

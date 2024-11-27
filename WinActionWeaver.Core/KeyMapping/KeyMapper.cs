@@ -9,12 +9,12 @@ public class KeyMapper : IKeyMapper, IDisposable
     
     public event EventHandler<VirtualKey>? KeyPressed;
 
-    public KeyMapper()
+    public KeyMapper(MessageLoop messageLoop)
     {
         try
         {
             Console.WriteLine("Initializing KeyMapper");
-            _messageLoop = new MessageLoop();
+            _messageLoop = messageLoop;
             _keyboardSimulator = new KeyboardSimulator();
             
             _keyboardHook = _messageLoop.KeyboardHook;
@@ -31,23 +31,18 @@ public class KeyMapper : IKeyMapper, IDisposable
 
     private void OnKeyIntercepted(object? sender, VirtualKey key)
     {
-        Console.WriteLine($"Key intercepted: {key}");
         if (_keyMappings.TryGetValue(key, out var mappedKey))
         {
             Console.WriteLine($"Remapping {key} to {mappedKey}");
             _keyboardSimulator.SimulateKeyPress(mappedKey);
             KeyPressed?.Invoke(this, mappedKey);
         }
-        else
-        {
-            Console.WriteLine($"No mapping found for {key}");
-            KeyPressed?.Invoke(this, key);
-        }
     }
 
     public void RemapKey(VirtualKey originalKey, VirtualKey newKey)
     {
         _keyMappings[originalKey] = newKey;
+        _keyboardHook.AddRemappedKey(originalKey);
     }
 
     public void HandleKeyPress(VirtualKey key)
@@ -58,7 +53,6 @@ public class KeyMapper : IKeyMapper, IDisposable
 
     public void Dispose()
     {
-        _keyboardHook.Dispose();
-        _messageLoop.Dispose();
+        _keyboardHook?.Dispose();
     }
 } 
