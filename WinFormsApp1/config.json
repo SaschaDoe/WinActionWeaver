@@ -1,0 +1,13 @@
+{
+  "ShowDebugConsole": true,
+  "Mappings": [
+    {
+      "SourceKey": "A",
+      "TargetKey": "B"
+    },
+    {
+      "SourceKey": "Space",
+      "TargetKey": "Enter"
+    }
+  ]
+}
